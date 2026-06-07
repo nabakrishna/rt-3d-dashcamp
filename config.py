@@ -46,7 +46,7 @@ RISK_COLORS: Dict[str, Tuple[int, int, int]] = {
 # ─── Output / panel dimensions ────────────────────────────────────────────────
 
 OUTPUT_W: int = 1920          # total composed frame width  (left + divider + right)
-OUTPUT_H: int =  540          # total composed frame height
+OUTPUT_H: int =  720          # total composed frame height
 PANEL_W:  int = OUTPUT_W // 2 # each side panel width
 PANEL_H:  int = OUTPUT_H      # each side panel height
 
