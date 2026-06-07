@@ -17,6 +17,7 @@ import subprocess
 import sys
 import time
 import warnings
+import numpy as np
 
 warnings.filterwarnings("ignore")
 
@@ -109,6 +110,7 @@ def process_video(cfg: AppConfig) -> None:
 
     # ── Open input ────────────────────────────────────────────────────────
     cap = cv2.VideoCapture(cfg.input_path)
+    rotation = cap.get(cv2.CAP_PROP_ORIENTATION_META) # new code --------------------
     if not cap.isOpened():
         logger.error("Cannot open video: %s", cfg.input_path)
         sys.exit(1)
@@ -143,8 +145,21 @@ def process_video(cfg: AppConfig) -> None:
     frame_no = 0
 
     try:
+        # add this before while True:
+        # depth_norm = np.zeros((src_h, src_w), dtype=np.float32)
+
         while True:
             ret, bgr = cap.read()
+            #new code-------------------------------------------------------
+            # auto-rotate based on metadata
+            if rotation == 90:
+                bgr = cv2.rotate(bgr, cv2.ROTATE_90_CLOCKWISE)
+            elif rotation == 180:
+                bgr = cv2.rotate(bgr, cv2.ROTATE_180)
+            elif rotation == 270:
+                bgr = cv2.rotate(bgr, cv2.ROTATE_90_COUNTERCLOCKWISE)
+            #new code-------------------------------------------------------
+            
             if not ret:
                 break
             frame_no += 1
@@ -171,6 +186,9 @@ def process_video(cfg: AppConfig) -> None:
             depth_small = cv2.resize(work, (DEPTH_INPUT_W, DEPTH_INPUT_H))
             depth_norm  = depth_est.estimate(depth_small)
             depth_norm  = cv2.resize(depth_norm, (work_w, work_h))
+            # if frame_no % 3 == 0:
+            #     depth_small = cv2.resize(work, (DEPTH_INPUT_W, DEPTH_INPUT_H))
+            #     depth_norm  = depth_est.estimate(depth_small)
 
 
             #new code -----------------------------------------------------
