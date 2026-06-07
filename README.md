@@ -63,7 +63,7 @@ python -m venv .venv (py -3.12.5 or less)
 
 ```bash
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements-gpu.txt
 ```
 
 ### 3b. GPU install (NVIDIA CUDA 12.x)
