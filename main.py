@@ -172,6 +172,42 @@ def process_video(cfg: AppConfig) -> None:
             depth_norm  = depth_est.estimate(depth_small)
             depth_norm  = cv2.resize(depth_norm, (work_w, work_h))
 
+
+            #new code -----------------------------------------------------
+            # det_w    = min(src_w, 640)
+            # det_h    = int(src_h * det_w / src_w)
+            # det_frame = cv2.resize(bgr, (det_w, det_h))
+
+            # # Render frame — full resolution for quality output
+            # work_w = min(src_w, 1920)
+            # work_h = int(src_h * work_w / src_w)
+            # work   = cv2.resize(bgr, (work_w, work_h))
+
+            # # YOLO runs on the small frame
+            # results = yolo(
+            #     det_frame,
+            #     conf=cfg.conf,
+            #     classes=VEHICLE_CLASS_IDS,
+            #     verbose=False,
+            #     device=device,
+            # )
+
+            # # Scale detections boxes up from det_frame coords → work frame coords
+            # sv_det  = sv.Detections.from_ultralytics(results[0])
+            # scale_x = work_w / det_w
+            # scale_y = work_h / det_h
+            # if len(sv_det) > 0:
+            #     sv_det.xyxy[:, [0, 2]] *= scale_x
+            #     sv_det.xyxy[:, [1, 3]] *= scale_y
+            # tracked = tracker.update(sv_det)
+
+            # # Depth on a smaller input (saves ~60% of inference time)
+            # from config import DEPTH_INPUT_W, DEPTH_INPUT_H
+            # depth_small = cv2.resize(work, (DEPTH_INPUT_W, DEPTH_INPUT_H))
+            # depth_norm  = depth_est.estimate(depth_small)
+            # depth_norm  = cv2.resize(depth_norm, (work_w, work_h))
+            #------------------------------------------------------------
+
             # ── Visualisation ─────────────────────────────────────────────
             left  = draw_left_panel(work, tracked, depth_norm, tracker)
             right = draw_right_panel(depth_norm, tracked, work_w, work_h)
@@ -186,8 +222,8 @@ def process_video(cfg: AppConfig) -> None:
 
             # ── Optional live preview ─────────────────────────────────────
             if cfg.show:
-                preview_w = 1280
-                preview_h = int(PANEL_H * preview_w / OUTPUT_W)
+                preview_w = 1420
+                preview_h = int(PANEL_H * preview_w / OUTPUT_W) + 100
                 preview   = cv2.resize(frame, (preview_w, preview_h))
                 cv2.imshow("3D Dashcam Perception  [Q = quit]", preview)
                 if cv2.waitKey(1) & 0xFF == ord("q"):
