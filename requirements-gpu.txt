@@ -1,0 +1,26 @@
+
+numpy>=1.26.4
+scipy>=1.11.4
+Pillow>=10.2.0
+tqdm>=4.66.2
+
+torch>=2.2.0
+torchvision>=0.17.0
+torchaudio>=2.2.0
+
+transformers>=4.40.0,<5.0.0
+huggingface-hub>=0.22.0
+timm>=0.9.16
+accelerate>=0.28.0
+safetensors>=0.4.3
+
+opencv-python>=4.9.0.80
+ultralytics>=8.2.0
+supervision>=0.21.0
+
+# numpy 1.26+ is required for Python 3.12 (1.24.x does NOT support 3.12)
+
+#  the 'ffmpeg' *binary* must be installed separately. ────────
+#   Linux : sudo apt-get install ffmpeg
+#   macOS : brew install ffmpeg
+#   Windows: https://ffmpeg.org/download.html  (or: winget install Gyan.FFmpeg)
