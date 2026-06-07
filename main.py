@@ -269,11 +269,11 @@ def process_video(cfg: AppConfig) -> None:
         if os.path.exists(tmp_path):
             os.remove(tmp_path)
         size_mb = os.path.getsize(final_path) / (1024 ** 2)
-        print(f"\n✅  OUTPUT  →  {final_path}  ({size_mb:.1f} MB)")
+        print(f"\n OUTPUT  →  {final_path}  ({size_mb:.1f} MB)")
     else:
         shutil.move(tmp_path, final_path)
         size_mb = os.path.getsize(final_path) / (1024 ** 2)
-        print(f"\n✅  OUTPUT  →  {final_path}  ({size_mb:.1f} MB)  [uncompressed]")
+        print(f"\n OUTPUT  →  {final_path}  ({size_mb:.1f} MB)  [uncompressed]")
         print("    Tip: install the ffmpeg binary for smaller H.264 output.")
         print("         https://ffmpeg.org/download.html")
 
