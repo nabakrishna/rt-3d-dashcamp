@@ -208,4 +208,18 @@ value) to the bottom and far (low depth value) toward the vanishing point.
 read the error
 
 
+## note
+
+the current avg fps is nearly ~10 (goal fps- ~15)
+for incease the fps , see the bottleneck
+
+Common bottlenecks in computer vision--
+  Model inference (YOLO, Depth models)
+  Rendering / drawing thousands of points
+  Video encoding (writer.write)
+  CPU ↔ GPU data transfers
+  Large image resizing
+
+check where is the mac bottleneck prob improve their.
+
   
