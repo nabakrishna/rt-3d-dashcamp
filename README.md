@@ -106,7 +106,7 @@ python main.py <input_video> [options]
 | `--show` | *(off)* | Open live preview window (press **Q** to quit) |
 | `--output-dir DIR` | `./output` | Where to save `final_output.mp4` |
 
-### Examples
+### run commands
 
 ```bash
 # Basic CPU run
@@ -124,7 +124,7 @@ python main.py trip.mp4 --output-dir /videos/processed
 ## Project structure
 
 ```
-dashcam-perception/
+rt-2d-dashcam/
 │
 ├── main.py          Entry point, argument parsing, video I/O loop
 ├── config.py        All constants, thresholds, and AppConfig dataclass
