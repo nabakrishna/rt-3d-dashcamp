@@ -45,8 +45,8 @@ RISK_COLORS: Dict[str, Tuple[int, int, int]] = {
 
 # ─── Output / panel dimensions ────────────────────────────────────────────────
 
-OUTPUT_W: int = 1920          # total composed frame width  (left + divider + right)
-OUTPUT_H: int =  720          # total composed frame height
+OUTPUT_W: int =  2560 #1920          # total composed frame width  (left + divider + right)
+OUTPUT_H: int =  1440 #720          # total composed frame height
 PANEL_W:  int = OUTPUT_W // 2 # each side panel width
 PANEL_H:  int = OUTPUT_H      # each side panel height
 
@@ -54,8 +54,8 @@ PANEL_H:  int = OUTPUT_H      # each side panel height
 # ─── Depth model ─────────────────────────────────────────────────────────────
 
 DEPTH_MODEL: str        = "depth-anything/Depth-Anything-V2-Small-hf"
-DEPTH_INPUT_W: int      = 320   # width fed to depth model (smaller = faster)
-DEPTH_INPUT_H: int      = 192   # height fed to depth model
+DEPTH_INPUT_W: int      = 640 #320   # width fed to depth model (smaller = faster)
+DEPTH_INPUT_H: int      = 384 #192   # height fed to depth model
 DEPTH_ALPHA:   float    = 0.60  # temporal smoothing weight for previous frame
 
 
