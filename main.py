@@ -141,6 +141,7 @@ def process_video(cfg: AppConfig) -> None:
     try:
         # add this before while True:
         # depth_norm = np.zeros((src_h, src_w), dtype=np.float32)
+        depth_norm = None
 
         while True:
             ret, bgr = cap.read()
@@ -159,7 +160,7 @@ def process_video(cfg: AppConfig) -> None:
             frame_no += 1
 
             # Working resolution — cap at 640 px wide for speed.
-            work_w = min(src_w, 640)
+            work_w = min(src_w, 960)  #make changes---------------------------------------------------------
             work_h = int(src_h * work_w / src_w)
             work   = cv2.resize(bgr, (work_w, work_h))
 
@@ -177,9 +178,15 @@ def process_video(cfg: AppConfig) -> None:
             # ── Depth estimation ──────────────────────────────────────────
             # Run on a smaller crop for speed; upscale result back to work size.
             from config import DEPTH_INPUT_W, DEPTH_INPUT_H
-            depth_small = cv2.resize(work, (DEPTH_INPUT_W, DEPTH_INPUT_H))
-            depth_norm  = depth_est.estimate(depth_small)
-            depth_norm  = cv2.resize(depth_norm, (work_w, work_h))
+            # depth_small = cv2.resize(work, (DEPTH_INPUT_W, DEPTH_INPUT_H))
+            # t2 = time.perf_counter()
+            # depth_norm  = depth_est.estimate(depth_small)
+            # print(f"DEPTH: {time.perf_counter() - t2:.3f}s")
+            # depth_norm  = cv2.resize(depth_norm, (work_w, work_h))
+            if frame_no % 2 == 0 or depth_norm is None:
+                depth_small = cv2.resize(work, (DEPTH_INPUT_W, DEPTH_INPUT_H))
+                depth_norm  = depth_est.estimate(depth_small)
+                depth_norm  = cv2.resize(depth_norm, (work_w, work_h))
             # if frame_no % 3 == 0:
             #     depth_small = cv2.resize(work, (DEPTH_INPUT_W, DEPTH_INPUT_H))
             #     depth_norm  = depth_est.estimate(depth_small)
@@ -221,9 +228,11 @@ def process_video(cfg: AppConfig) -> None:
             #------------------------------------------------------------
 
             # ── Visualisation ─────────────────────────────────────────────
+            t3 = time.perf_counter()
             left  = draw_left_panel(work, tracked, depth_norm, tracker)
             right = draw_right_panel(depth_norm, tracked, work_w, work_h)
             frame = compose(left, right)
+            print("DRAW:", time.perf_counter() - t3)
 
             elapsed = time.perf_counter() - t0
             fps_now = frame_no / max(elapsed, 1e-6)
@@ -235,7 +244,7 @@ def process_video(cfg: AppConfig) -> None:
             # ── Optional live preview ─────────────────────────────────────
             if cfg.show:
                 preview_w = 1420
-                preview_h = int(PANEL_H * preview_w / OUTPUT_W) + 100
+                preview_h = int(PANEL_H * preview_w / OUTPUT_W)
                 preview   = cv2.resize(frame, (preview_w, preview_h))
                 cv2.imshow("3D Dashcam Perception  [Q = quit]", preview)
                 if cv2.waitKey(1) & 0xFF == ord("q"):
