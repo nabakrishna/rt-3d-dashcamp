@@ -1,10 +1,4 @@
 """
-main.py — Entry point for the Real-Time 3D Dashcam Perception System.
-
-Usage
------
-    python main.py path/to/dashcam.mp4 [--conf 0.35] [--device cpu|cuda] [--show]
-
 Run ``python main.py --help`` for the full option list.
 """
 from __future__ import annotations
