@@ -54,9 +54,9 @@ cd rt-3d-dashcam
 python -m venv .venv (py -3.12.5 or less)
 ```
 
-### Windows (cmd)
+### Windows (ps)
 ```
-.venv\Scripts\activate.bat
+.venv\Scripts\Activate 
 ```
 
 ### 3a. CPU install
@@ -131,9 +131,7 @@ dashcam-perception/
 ├── models.py        DepthEstimator (Depth-Anything-V2) + load_yolo
 ├── tracker.py       ObjectTracker (ByteTrack), distance & risk helpers
 ├── visualizer.py    Panel drawing: dashcam view, 3-D BEV, HUD
-│
-├── requirements.txt        CPU dependencies (Python 3.10–3.12)
-├── requirements-gpu.txt    GPU / CUDA 12.x dependencies
+├── requirements-gpu.txt    GPU /CPU  (CUDA 12.x dependencies)(CPU dependencies (Python 3.10–3.12))
 └── README.md
 ```
 
@@ -193,7 +191,7 @@ value) to the bottom and far (low depth value) toward the vanishing point.
 
 ---
 
-## Tuning tips
+## config tips
 
 - Raise `--conf` (e.g. `0.50`) to suppress false positives on busy roads.
 - Lower `DEPTH_INPUT_W / H` in `config.py` to speed up CPU inference at
@@ -209,8 +207,5 @@ value) to the bottom and far (low depth value) toward the vanishing point.
 
 read the error
 
----
 
-## Licence
-
-MIT — see `LICENSE` for details.  
+  
