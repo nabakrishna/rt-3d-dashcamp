@@ -51,7 +51,7 @@ cd rt-3d-dashcam
 ### 2. Create a virtual environment (recommended)
 
 ```bash
-python -m venv .venv (py -3.12.5 or less)
+python -3.12 -m venv .venv (py -3.12.5 or less)
 ```
 
 ### Windows (ps)
@@ -143,7 +143,7 @@ rt-2d-dashcam/
 Video frame
     │
     ▼
-cv2.resize ──────────► work frame (≤ 640 px wide)
+cv2.resize ──────────► work frame (≤ 960 px wide)
     │                         │
     │              ┌──────────┴──────────┐
     │              │                     │
@@ -220,6 +220,6 @@ Common bottlenecks in computer vision--
   CPU ↔ GPU data transfers
   Large image resizing
 
-check where is the mac bottleneck prob improve their.
+check where is the main bottleneck prob improve their.
 
   
