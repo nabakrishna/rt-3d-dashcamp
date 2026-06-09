@@ -25,7 +25,6 @@ annotated dual-panel video showing:
 ## output 
 ### video
 <video src="resultss/tested_demmo_2.mp4" width="640" controls></video>
-<video src="https://github.com/user-attachments/assets/197b70cb-710a-40c2-a32f-da0bbf33de40" width="640" controls></video>
 
 https://github.com/user-attachments/assets/197b70cb-710a-40c2-a32f-da0bbf33de40
 
