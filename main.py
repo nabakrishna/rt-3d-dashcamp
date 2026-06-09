@@ -228,11 +228,11 @@ def process_video(cfg: AppConfig) -> None:
             #------------------------------------------------------------
 
             # ── Visualisation ─────────────────────────────────────────────
-            t3 = time.perf_counter()
+            # t3 = time.perf_counter()
             left  = draw_left_panel(work, tracked, depth_norm, tracker)
             right = draw_right_panel(depth_norm, tracked, work_w, work_h)
             frame = compose(left, right)
-            print("DRAW:", time.perf_counter() - t3)
+            # print("DRAW:", time.perf_counter() - t3)
 
             elapsed = time.perf_counter() - t0
             fps_now = frame_no / max(elapsed, 1e-6)
@@ -254,7 +254,7 @@ def process_video(cfg: AppConfig) -> None:
             pbar.update(1)
 
     finally:
-        # Always release resources even on exceptions.
+        # always release resources even on exceptions.
         pbar.close()
         cap.release()
         writer.release()
