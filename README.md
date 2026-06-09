@@ -26,6 +26,8 @@ annotated dual-panel video showing:
 ### video
 <video src="resultss/tested_demmo_1.mp4" width="640" controls></video>
 
+<video src="https://github.com/nabakrishna/rt-3d-dashcamp/resultss/tested_demmo_1.mp4" width="640" controls></video>
+
 ### image
 ![Alternative Text](resultss/tested_img_1.png)
 ---
