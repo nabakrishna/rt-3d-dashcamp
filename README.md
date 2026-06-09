@@ -32,7 +32,7 @@ annotated dual-panel video showing:
 | Disk (models)    | ~600 MB for YOLO + depth weights |
 | GPU *(optional)* | NVIDIA with CUDA 11.8 or 12.x  |
 | ffmpeg binary    | any recent version (for H.264 output) |
-
+and the rest are in the requirements-gpu.txt file
 > **Python 3.12 note** — `numpy < 1.26` does not support Python 3.12.
 > This project pins `numpy >= 1.26.4`; the old `1.24.x` pin found in some
 > forks has been removed.
@@ -59,7 +59,7 @@ python -3.12 -m venv .venv (py -3.12.5 or less)
 .venv\Scripts\Activate 
 ```
 
-### 3a. CPU install
+### 3a. requirements install
 
 ```bash
 pip install --upgrade pip
@@ -126,6 +126,8 @@ python main.py trip.mp4 --output-dir /videos/processed
 ```
 rt-2d-dashcam/
 │
+├── resultss         tested img and vid
+├── .gitignore
 ├── main.py          Entry point, argument parsing, video I/O loop
 ├── config.py        All constants, thresholds, and AppConfig dataclass
 ├── models.py        DepthEstimator (Depth-Anything-V2) + load_yolo
@@ -220,6 +222,9 @@ Common bottlenecks in computer vision--
   CPU ↔ GPU data transfers
   Large image resizing
 
-check where is the main bottleneck prob improve their.
+check where is the main bottleneck problem and  improve that
+i have already write the some bottlenecl tests code, see in the commented section
+
+
 
   
