@@ -24,7 +24,7 @@ annotated dual-panel video showing:
 
 ## output 
 ### video
-<video src="resultss\tested_demmo_1.mp4" width="640" controls></video>
+<video src="resultss/tested_demmo_1.mp4" width="640" controls></video>
 
 ### image
 ![Alternative Text](resultss/tested_img_1.png)
