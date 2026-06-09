@@ -1,8 +1,7 @@
 """
-config.py — Global constants and application configuration.
+config.py — global constants and application configuration.
 
-All tuneable values live here so the other modules stay import-free of
-magic numbers.  Edit ONLY this file to change thresholds, dimensions, or
+edit ONLY this file to change thresholds, dimensions,output, sizes, pixels or
 model selection.
 """
 from __future__ import annotations
@@ -46,7 +45,7 @@ RISK_COLORS: Dict[str, Tuple[int, int, int]] = {
 # ─── Output / panel dimensions ────────────────────────────────────────────────
 
 OUTPUT_W: int =  2560 #1920          # total composed frame width  (left + divider + right)
-OUTPUT_H: int =  1440 #720          # total composed frame height
+OUTPUT_H: int =  1240 #720          # total composed frame height
 PANEL_W:  int = OUTPUT_W // 2 # each side panel width
 PANEL_H:  int = OUTPUT_H      # each side panel height
 
