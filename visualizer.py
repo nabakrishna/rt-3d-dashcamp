@@ -146,7 +146,7 @@ def draw_left_panel(
                     tipLength=0.4,
                 )
 
-    cv2.putText(out, "DASHCAM · ADAS PERCEPTION", (10, 22),
+    cv2.putText(out, "DASHCAM - ADAS PERCEPTION", (10, 22),
                 font, 0.55, (0, 255, 80), 1, cv2.LINE_AA)
     return out
 
@@ -293,7 +293,7 @@ def draw_right_panel(
                 color, PANEL_W, PANEL_H,
             )
 
-    cv2.putText(canvas, "3D BEV · DEPTH PERCEPTION", (10, 22),
+    cv2.putText(canvas, "3D BEV - DEPTH PERCEPTION", (10, 22),
                 cv2.FONT_HERSHEY_DUPLEX, 0.55, (0, 220, 255), 1, cv2.LINE_AA)
     return canvas
 
