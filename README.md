@@ -1,4 +1,4 @@
-# Real-Time 3D Dashcam Perception Syste
+# Real-Time 3D Dashcam Perception System
 
 A self-contained Python pipeline that turns any dashcam footage into an
 annotated dual-panel video showing:
